@@ -159,6 +159,7 @@ jobs:
         with:
           files: ./testoutput/itest-covdata.txt
           flags: integration-test
+          name: integration-test-${{ matrix.id }}
 
       - name: Upload test reports
         if: always()
