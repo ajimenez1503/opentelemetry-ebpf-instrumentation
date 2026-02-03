@@ -159,13 +159,13 @@ jobs:
         with:
           files: ./testoutput/itest-covdata.txt
           flags: integration-test
-          name: integration-test-${{ matrix.id }}
+          name: go-integration-test-coverage-${{ github.run_number }}-${{ matrix.id }}
 
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: go-test-reports-${{ github.run_number }}-${{ matrix.id }}
+          name: go-integration-test-reports-${{ github.run_number }}-${{ matrix.id }}
           path: /home/runner/reports/*.log
           retention-days: 5
 
@@ -173,7 +173,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
-          name: go-test-logs-${{ github.run_number }}-${{ matrix.id }}
+          name: go-integration-test-logs-${{ github.run_number }}-${{ matrix.id }}
           path: |
             testoutput/*.log
             testoutput/kind
